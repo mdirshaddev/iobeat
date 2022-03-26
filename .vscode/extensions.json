@@ -1,0 +1,28 @@
+{
+  "recommendations": [
+    "redhat.vscode-yaml",
+    "rangav.vscode-thunder-client",
+    "bradlc.vscode-tailwindcss",
+    "prisma.prisma",
+    "esbenp.prettier-vscode",
+    "github.vscode-pull-request-github",
+    "me-dutour-mathieu.vscode-github-actions",
+    "mhutchie.git-graph",
+    "dbaeumer.vscode-eslint",
+    "dsznajder.es7-react-js-snippets",
+    "formulahendry.auto-rename-tag",
+    "formulahendry.auto-close-tag",
+    "endormi.2077-theme",
+    "hookyqr.beautify",
+    "mikestead.dotenv",
+    "donjayamanne.githistory",
+    "eamodio.gitlens",
+    "oderwat.indent-rainbow",
+    "pkief.material-icon-theme",
+    "christian-kohler.path-intellisense",
+    "mechatroner.rainbow-csv",
+    "ms-vscode-remote.remote-containers",
+    "ms-vscode-remote.remote-wsl",
+    "Gruntfuggly.todo-tree"
+  ]
+}

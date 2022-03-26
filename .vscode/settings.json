@@ -1,0 +1,48 @@
+{
+  // Editor
+  "editor.tabSize": 2,
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true,
+    "source.fixAll.format": true
+  },
+  "editor.autoIndent": "full",
+  "editor.fontFamily": "Fira Code, Consolas, 'Courier New', monospace",
+  "editor.fontLigatures": true,
+  // Files
+  "files.eol": "\n",
+  // Workbench
+  "workbench.productIconTheme": "Default",
+  "workbench.colorTheme": "Monokai",
+  "workbench.iconTheme": "material-icon-theme",
+  // CSS
+  "css.validate": false,
+  // Terminal
+  "terminal.integrated.fontFamily": "MesloLGS NF",
+  "terminal.integrated.profiles.windows": {
+    "PowerShell": {
+      "source": "PowerShell",
+      "icon": "terminal-powershell",
+      "color": "terminal.ansiMagenta",
+      "overrideName": true
+    },
+    "Command Prompt": {
+      "path": [
+        "${env:windir}\\Sysnative\\cmd.exe",
+        "${env:windir}\\System32\\cmd.exe"
+      ],
+      "args": [],
+      "icon": "terminal-cmd",
+      "color": "terminal.ansiMagenta",
+      "overrideName": true
+    },
+    "Git Bash": {
+      "source": "Git Bash",
+      "color": "terminal.ansiMagenta",
+      "icon": "terminal-bash",
+      "overrideName": true
+    }
+  }
+}
