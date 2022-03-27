@@ -44,5 +44,9 @@
       "icon": "terminal-bash",
       "overrideName": true
     }
+  },
+  // Prisma Default Formatter
+  "[prisma]": {
+    "editor.defaultFormatter": "Prisma.prisma"
   }
 }
