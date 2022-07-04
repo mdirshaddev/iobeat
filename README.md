@@ -5,14 +5,22 @@
 
 **Final Year Project on Heart Attack Prediction using Tensorflow.js deep learning model.**
 
-- App Deployed Heroku with Nextjs for Real Time Data using Server Sent Events and Redis PPub/Sub
+## Software Part
+
+A Web Application where user can see his real time data from the device usage
+
+- App Deployed on Heroku with NextJS Framework
 - Choice of Database is PostgreSQL
 - Using Prisma for CRUD Operation
-- Using Next Auth with Prisma Adapter
+- Using Next Auth with Prisma Adapter for Simplifying Authentication
 - Storybook for Component Driven Development
 - Cypress for End to End Testing
 - Storybook deployed in Chromatic
 - Tensorflow.js Model for Heart Attack Prediction
+
+## Hardware Part
+
+IoT device is used to transmit data to our web server where we are predicting data and displaying it in our web application.
 
 # About Next.js
 
