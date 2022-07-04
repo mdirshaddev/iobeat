@@ -1,11 +1,18 @@
 # Iobeat
 
+[![CodeQL](https://github.com/mdirshaddev/iobeat/actions/workflows/codeql.yml/badge.svg)](https://github.com/mdirshaddev/iobeat/actions/workflows/codeql.yml)
+[![Storybook](https://raw.githubusercontent.com/storybooks/brand/master/badge/badge-storybook.svg)](https://main--62c1b73e183cb81fa78ee635.chromatic.com)
+
 **Final Year Project on Heart Attack Prediction using Tensorflow.js deep learning model.**
 
-- App Deployed in Vercel but because of Server Sent Event not works in Serverless environment
-- External Server Deployed in Heroku with Express Server for Real Time Data using Server Sent Events
-- Choice of Database is mongoDb
+- App Deployed Heroku with Nextjs for Real Time Data using Server Sent Events and Redis PPub/Sub
+- Choice of Database is PostgreSQL
 - Using Prisma for CRUD Operation
+- Using Next Auth with Prisma Adapter
+- Storybook for Component Driven Development
+- Cypress for End to End Testing
+- Storybook deployed in Chromatic
+- Tensorflow.js Model for Heart Attack Prediction
 
 # About Next.js
 
