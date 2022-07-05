@@ -5,6 +5,8 @@ on:
   workflow_run:
     workflows: ['CodeQL']
     branches: [main]
+    paths:
+      - '**.stories.tsx'
     types:
       - completed
 
