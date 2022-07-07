@@ -56,7 +56,7 @@ jobs:
 
       - name: '⛑️ Build the Web Application'
         run: |
-          yarn build
+          export SENTRY_AUTH_TOKEN=${{ secrets.SENTRY_AUTH_TOKEN }} && yarn build
 
   cypress-test:
     needs: [build]
