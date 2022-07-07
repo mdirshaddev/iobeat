@@ -62,7 +62,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: build
-          path: build
+          path: .next
 
   cypress-test:
     needs: [build]
@@ -80,7 +80,7 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: build
-          path: build
+          path: .next
 
       - name: '☁️ Cypress End to End Testing'
         uses: cypress-io/github-action@v4
