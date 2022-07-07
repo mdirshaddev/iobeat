@@ -67,11 +67,15 @@ jobs:
         os: ['ubuntu-latest', 'windows-latest', 'macos-latest']
     runs-on: ${{ matrix.os }}
     steps:
+      - name: '☁️ Checkout Repository'
+        uses: actions/checkout@v2
+
       - name: '☁️ Cypress End to End Testing'
         uses: cypress-io/github-action@v4
         with:
           # Specify Browser since container image is compile with Firefox
           browser: firefox
+          build: export SENTRY_AUTH_TOKEN=${{ secrets.SENTRY_AUTH_TOKEN }} && yarn build
 
   chromatic-deployment:
     needs: [cypress-test]
