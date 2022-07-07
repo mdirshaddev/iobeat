@@ -85,9 +85,13 @@ jobs:
       - name: '☁️ Cypress End to End Testing'
         uses: cypress-io/github-action@v4
         with:
-          # Specify Browser since container image is compile with Firefox
-          browser: firefox
-          build: export SENTRY_AUTH_TOKEN=${{ secrets.SENTRY_AUTH_TOKEN }} && yarn build
+          # # Specify Browser since container image is compile with Firefox
+          # browser: firefox
+          # build: export SENTRY_AUTH_TOKEN=${{ secrets.SENTRY_AUTH_TOKEN }} && yarn build
+          install: false
+          start: yarn test
+          wait-on: 'http://localhost:3000'
+          browser: chrome
 
   chromatic-deployment:
     needs: [cypress-test]
