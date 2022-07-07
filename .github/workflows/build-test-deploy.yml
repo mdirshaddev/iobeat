@@ -1,0 +1,96 @@
+name: '🧑‍💻 Code Quality ⛑️ Build 🧪 Test ☁️ Deploy'
+
+on: [push, pull_request]
+
+jobs:
+  code-quality:
+    name: '🧑‍💻 Code Quality'
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+
+    steps:
+      - name: '☁️ Checkout repository'
+        uses: actions/checkout@v3
+
+      # Initializes the CodeQL tools for scanning.
+      - name: '📜 Initialize CodeQL'
+        uses: github/codeql-action/init@v2
+        with:
+          languages: 'typescript'
+
+      # Autobuild attempts to build any compiled languages  (C/C++, C#, or Java).
+      # If this step fails, then you should remove it and run the build manually (see below)
+      - name: '⛑️ Autobuild'
+        uses: github/codeql-action/autobuild@v2
+
+      - name: '🧑‍🏭 Perform CodeQL Analysis'
+        uses: github/codeql-action/analyze@v2
+
+  build:
+    needs: [code-quality]
+    name: '⛑️ Build The Web Application'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: '☁️ Checkout Repository'
+        uses: actions/checkout@v2
+
+      - name: '🔧 Setup Node.js'
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.15.1
+
+      - name: '🔧 Install Yarn Globally'
+        run: npm i -g yarn@latest
+
+      - name: '📦 Install Dependencies'
+        run: yarn install --frozen-lockfile
+
+      - name: '🔍 Check Lint and Types'
+        run: |
+          yarn check-lint
+          yarn check-types
+
+      - name: '⛑️ Build the Web Application'
+        run: |
+          yarn build
+
+  cypress-test:
+    needs: [build]
+    name: '🧪 Cypress Testing'
+    strategy:
+      fail-fast: true
+      matrix:
+        os: ['ubuntu-latest', 'windows-latest', 'macos-latest']
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: '☁️ Cypress End to End Testing'
+        uses: cypress-io/github-action@v4
+        with:
+          # Specify Browser since container image is compile with Firefox
+          browser: firefox
+
+  chromatic-deployment:
+    needs: [cypress-test]
+    # Operating System
+    runs-on: ubuntu-latest
+    # Job steps
+    steps:
+      - name: '☁️ Checkout Repository'
+        uses: actions/checkout@v2
+
+      - name: '🔍 Verify Changed files'
+        uses: tj-actions/verify-changed-files@v10
+        id: verify-changed-files
+        with:
+          files: |
+            *.stories.tsx
+
+      - name: '🛠️ Run step only when files change'
+        if: steps.verify-changed-files.outputs.files_changed == 'true'
+        run: |
+          yarn install
+          yarn chromatic --project-token=${{ secrets.CHROMATIC_PROJECT_TOKEN }}

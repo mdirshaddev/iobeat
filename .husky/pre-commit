@@ -38,5 +38,15 @@ yarn build ||
         false;
 )
 
+echo '🤔🤔🤔🤔... Alright... Build looks good to me... Trying to run Cypress Test now. 🤔🤔🤔🤔'
+
+yarn test ||
+(
+        echo '❌👷🔨❌ Better call Bob... Because your test failed ❌👷🔨❌
+                Cypress test failed: View the errors above to see why. 
+        '
+        false;
+)
+
 # If everything passes... Now we can commit
 echo '✅✅✅✅ You win this time... I am committing this now. ✅✅✅✅'
