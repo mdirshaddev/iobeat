@@ -54,6 +54,12 @@ jobs:
           yarn check-lint
           yarn check-types
 
+      - name: ''
+        uses: actions/upload-artifact@v3
+        with:
+          name: build
+          path: build
+
       - name: '⛑️ Build the Web Application'
         run: |
           export SENTRY_AUTH_TOKEN=${{ secrets.SENTRY_AUTH_TOKEN }} && yarn build
@@ -69,6 +75,12 @@ jobs:
     steps:
       - name: '☁️ Checkout Repository'
         uses: actions/checkout@v2
+
+      - name: ''
+        uses: actions/download-artifact@v3
+        with:
+          name: build
+          path: build
 
       - name: '☁️ Cypress End to End Testing'
         uses: cypress-io/github-action@v4
