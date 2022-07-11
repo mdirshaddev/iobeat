@@ -15,7 +15,7 @@
   "files.eol": "\n",
   // Workbench
   "workbench.productIconTheme": "Default",
-  "workbench.colorTheme": "2077",
+  "workbench.colorTheme": "GitHub Dark",
   "workbench.iconTheme": "material-icon-theme",
   // CSS
   "css.validate": false,
