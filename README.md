@@ -1,8 +1,7 @@
 # Iobeat
 
-[![CodeQL](https://github.com/mdirshaddev/iobeat/actions/workflows/codeql.yml/badge.svg)](https://github.com/mdirshaddev/iobeat/actions/workflows/codeql.yml)
-[![Chromatic](https://github.com/mdirshaddev/iobeat/actions/workflows/chromatic.yml/badge.svg)](https://github.com/mdirshaddev/iobeat/actions/workflows/chromatic.yml)
-[![Storybook](https://raw.githubusercontent.com/storybooks/brand/master/badge/badge-storybook.svg)](https://main--62c1b73e183cb81fa78ee635.chromatic.com)
+[![🧑‍💻 Code Quality ⛑️ Build 🧪 Test ☁️ Deploy](https://github.com/mdirshaddev/iobeat/actions/workflows/build-test-deploy.yml/badge.svg)](https://github.com/mdirshaddev/iobeat/actions/workflows/build-test-deploy.yml)
+[![Storybook](https://raw.githubusercontent.com/storybooks/brand/master/badge/badge-storybook.svg)](https://www.chromatic.com/builds?appId=62c1b73e183cb81fa78ee635)
 
 **Final Year Project on Heart Attack Prediction using Tensorflow.js deep learning model.**
 
