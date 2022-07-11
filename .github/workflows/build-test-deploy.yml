@@ -67,11 +67,7 @@ jobs:
   cypress-test:
     needs: [build]
     name: '🧪 Cypress Testing'
-    strategy:
-      fail-fast: true
-      matrix:
-        os: ['ubuntu-latest', 'windows-latest', 'macos-latest']
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
     steps:
       - name: '☁️ Checkout Repository'
         uses: actions/checkout@v2
@@ -85,7 +81,7 @@ jobs:
       - name: '☁️ Cypress End to End Testing'
         uses: cypress-io/github-action@v4
         with:
-          # # Specify Browser since container image is compile with Firefox
+          # Specify Browser since container image is compile with Firefox
           browser: firefox
           install: true
           start: yarn start
