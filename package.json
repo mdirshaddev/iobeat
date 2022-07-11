@@ -9,7 +9,10 @@
     "check-format": "prettier --check .",
     "check-types": "tsc --noEmit",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run",
+    "test": "start-server-and-test start 3000 cypress:run"
   },
   "author": {
     "name": "Md Irshad",
@@ -49,6 +52,7 @@
     "autoprefixer": "^10.4.4",
     "babel-loader": "^8.2.5",
     "chromatic": "^6.7.0",
+    "cypress": "^10.3.0",
     "eslint": "8.12.0",
     "eslint-config-next": "12.1.1",
     "eslint-plugin-storybook": "^0.5.13",
@@ -56,6 +60,7 @@
     "postcss": "^8.4.12",
     "prettier": "^2.6.1",
     "prisma": "^4.0.0",
+    "start-server-and-test": "^1.14.0",
     "storybook-addon-next-router": "^4.0.0",
     "storybook-addon-performance": "^0.16.1",
     "storybook-addon-pseudo-states": "^1.15.1",
