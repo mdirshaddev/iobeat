@@ -87,10 +87,10 @@ jobs:
         with:
           # # Specify Browser since container image is compile with Firefox
           # browser: firefox
-          # build: export SENTRY_AUTH_TOKEN=${{ secrets.SENTRY_AUTH_TOKEN }} && yarn build
           install: false
-          start: yarn test
+          start: yarn start
           wait-on: 'http://localhost:3000'
+          wait-on-timeout: 60
           browser: chrome
 
   chromatic-deployment:
