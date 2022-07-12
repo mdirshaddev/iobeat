@@ -1,0 +1,13 @@
+name: '👨‍🚀 Ready for Production Deployment 🚀'
+
+on:
+  pull_request:
+    branches:
+      - main
+    types: [closed]
+
+jobs:
+  deployment:
+    if: ${{ github.event.pull_request.merged }}
+    name: '🔍 Check for Code Quality'
+    uses: mdirshaddev/iobeat/.github/workflows/codeql.yml@main
