@@ -1,4 +1,4 @@
-name: Publish stories if changed
+name: '🚀 Deployment of Storybook 🌌'
 
 on:
   workflow_call:
