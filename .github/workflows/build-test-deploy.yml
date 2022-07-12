@@ -117,6 +117,15 @@ jobs:
           # determine the unique run id necessary to re-run the checks
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           DEBUG: 'cypress:*'
+
+      - name: Upload video 📼
+        id: upload-video
+        uses: actions/upload-artifact@v2
+        if: always()
+        with:
+          name: Test videos
+          path: cypress/videos
+          retention-days: 14
       - name: Print Dashboard URL
         run: |
           echo Cypress finished with: ${{ steps.cypress.outcome }}
