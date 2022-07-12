@@ -1,7 +1,14 @@
-name: 'Cypress'
+name: '🧪 Cypress End to End Testing'
 
 on:
   workflow_call:
+    secrets:
+      CYPRESS_PROJECT_ID:
+        required: true
+      CYPRESS_RECORD_KEY:
+        required: true
+      GITHUB_TOKEN:
+        required: true
 
 jobs:
   # single job that generates and outputs a common id
