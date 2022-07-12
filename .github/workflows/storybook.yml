@@ -1,4 +1,4 @@
-name: 'Storybook'
+name: '🚀 Deployment of Storybook 🌌'
 
 on:
   workflow_call:
@@ -32,3 +32,4 @@ jobs:
           publish_dir: ./storybook-static
           commit_message: ${{ github.event.head_commit.message }}
           enable_jekyll: false
+          keep_files: false
