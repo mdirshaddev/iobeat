@@ -109,6 +109,7 @@ jobs:
           ci-build-id: ${{ needs.prepare.outputs.uuid }}
           group: 'Iobeat End to End Testing'
           tag: node-16.15.1
+          config-file: cypress.config.ts
         env:
           CYPRESS_PROJECT_ID: ${{ secrets.CYPRESS_PROJECT_ID }}
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
