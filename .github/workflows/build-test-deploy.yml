@@ -103,7 +103,7 @@ jobs:
         with:
           install: true
           # Specify Browser since container image is compile with Firefox
-          browser: firefox
+          browser: edge
           start: yarn start
           wait-on: 'http://localhost:3000'
           wait-on-timeout: 60
@@ -111,7 +111,7 @@ jobs:
           group: 'Iobeat End to End Testing'
           tag: node-16.15.1
           record: true
-          parallel: true
+          parallel: false
           config-file: cypress.config.ts
         env:
           CYPRESS_PROJECT_ID: ${{ secrets.CYPRESS_PROJECT_ID }}
