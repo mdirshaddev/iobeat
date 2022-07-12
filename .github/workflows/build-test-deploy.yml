@@ -65,6 +65,7 @@ jobs:
           path: .next
   # single job that generates and outputs a common id
   prepare:
+    name: '🔧 Prepare UUID for Cypress Testing'
     needs: [build]
     runs-on: ubuntu-latest
     outputs:
@@ -77,8 +78,8 @@ jobs:
         # "sha-5d3fe...35d3-time-1620841214"
         run: echo "::set-output name=value::sha-$GITHUB_SHA-time-$(date +"%s")"
   cypress-test:
-    needs: [prepare]
     name: '🧪 Cypress Testing'
+    needs: [prepare]
     runs-on: ubuntu-latest
     steps:
       - name: '☁️ Checkout Repository'
@@ -97,12 +98,12 @@ jobs:
         continue-on-error: true
         uses: cypress-io/github-action@v4
         with:
-          # Specify Browser since container image is compile with Firefox
-          browser: firefox
           install: true
-          start: yarn start
           record: true
           parallel: true
+          # Specify Browser since container image is compile with Firefox
+          browser: firefox
+          start: yarn start
           wait-on: 'http://localhost:3000'
           wait-on-timeout: 60
           ci-build-id: ${{ needs.prepare.outputs.uuid }}
@@ -121,6 +122,7 @@ jobs:
           echo See results at ${{ steps.cypress.outputs.dashboardUrl }}
 
   chromatic-deployment:
+    name: '☁️ Chromatic Deployment of Storybook'
     needs: [cypress-test]
     # Operating System
     runs-on: ubuntu-latest
