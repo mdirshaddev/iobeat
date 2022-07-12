@@ -1,0 +1,23 @@
+name: '👨‍🚀 Ready for Development'
+
+on:
+  push:
+    branches:
+      - 'development'
+
+jobs:
+  development:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: '🔍 Check for Code Quality'
+        uses: .github/workflows/codeql.yml@development
+
+      - name: '📦 Build the production files'
+        uses: .github/workflows/build.yml@development
+
+      - name: '🧪 Cypress End to End Testing'
+        uses: .github/workflows/cypress.yml@development
+
+      - name: '📢 Publish for Chromatic'
+        uses: .github/workflows/chromatic.yml@development
