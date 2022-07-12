@@ -63,6 +63,7 @@ jobs:
         with:
           name: build
           path: .next
+
   # single job that generates and outputs a common id
   prepare:
     name: '🔧 Prepare UUID for Cypress Testing'
@@ -70,6 +71,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       uuid: ${{ steps.uuid.outputs.value }}
+
     steps:
       - name: Generate unique ID 💎
         id: uuid
@@ -81,6 +83,7 @@ jobs:
     name: '🧪 Cypress Testing'
     needs: [prepare]
     runs-on: ubuntu-latest
+
     steps:
       - name: '☁️ Checkout Repository'
         uses: actions/checkout@v2
@@ -118,17 +121,16 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           DEBUG: 'cypress:*'
 
-      - name: Print Dashboard URL
+      - name: '📜 Print Cypress Dashboard URL'
         run: |
           echo Cypress finished with: ${{ steps.cypress.outcome }}
           echo See results at ${{ steps.cypress.outputs.dashboardUrl }}
 
   chromatic-deployment:
-    name: '☁️ Chromatic Deployment of Storybook'
+    name: '☁️ Chromatic Publish of Stories'
     needs: [cypress-test]
-    # Operating System
     runs-on: ubuntu-latest
-    # Job steps
+
     steps:
       - name: '☁️ Checkout Repository'
         uses: actions/checkout@v2
@@ -140,8 +142,10 @@ jobs:
           files: |
             ./src/**/*.stories.tsx
 
-      - name: '🛠️ Run step only when files change'
+      - name: '☁️ Publish to Chromatic'
         if: steps.verify-changed-files.outputs.files_changed == 'true'
-        run: |
-          yarn install
-          yarn chromatic --project-token=${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+        uses: chromaui/action@v1
+        # Chromatic GitHub Action options
+        with:
+          # 👇 Chromatic projectToken, refer to the manage page to obtain it.
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
