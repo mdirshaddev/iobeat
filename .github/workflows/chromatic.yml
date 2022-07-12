@@ -1,12 +1,7 @@
 name: '📢 Publish to Chromatic'
 
 on:
-  workflow_run:
-    workflows: ['Cypress']
-    types:
-      - 'completed'
-    branches-ignore:
-      - 'development'
+  workflow_call:
 
 jobs:
   chromatic-deployment:

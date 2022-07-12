@@ -1,10 +1,7 @@
 name: 'Cypress'
 
 on:
-  workflow_run:
-    workflows: ['Build']
-    types:
-      - 'completed'
+  workflow_call:
 
 jobs:
   # single job that generates and outputs a common id

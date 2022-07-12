@@ -1,0 +1,24 @@
+name: '👨‍🚀 Ready for Development'
+
+on:
+  push:
+    branches:
+      - 'development'
+  pull_request:
+    branches:
+      - 'development'
+
+jobs:
+  code-ql:
+    name: '🔍 Check for Code Quality'
+    uses: mdirshaddev/iobeat/.github/workflows/codeql.yml@development
+
+  build:
+    needs: [code-ql]
+    name: '📦 Build the Source Code'
+    uses: mdirshaddev/iobeat/.github/workflows/build.yml@development
+  
+  cypress-test:
+    needs: [build]
+    name: '🧪 Cypress End to End Test'
+    uses: mdirshaddev/iobeat/.github/workflows/cypress.yml@development
