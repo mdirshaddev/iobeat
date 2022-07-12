@@ -6,7 +6,6 @@ on:
 jobs:
   chromatic-deployment:
     name: '☁️ Chromatic Publish of Stories'
-    needs: [cypress-test]
     runs-on: ubuntu-latest
 
     steps:

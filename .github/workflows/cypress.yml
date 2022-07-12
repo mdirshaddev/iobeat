@@ -7,7 +7,6 @@ jobs:
   # single job that generates and outputs a common id
   prepare:
     name: '🔧 Prepare UUID for Cypress Testing'
-    needs: [build]
     runs-on: ubuntu-latest
     outputs:
       uuid: ${{ steps.uuid.outputs.value }}
