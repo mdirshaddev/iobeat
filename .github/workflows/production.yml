@@ -9,20 +9,5 @@ on:
 jobs:
   deployment:
     if: ${{ github.event.pull_request.merged }}
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: '🔍 Check for Code Quality'
-        uses: mdirshaddev/iobeat/.github/workflows/codeql.yml@main
-
-      - name: '📦 Build the production files'
-        uses: mdirshaddev/iobeat/.github/workflows/build.yml@main
-
-      - name: '🧪 Cypress End to End Testing'
-        uses: mdirshaddev/iobeat/.github/workflows/cypress.yml@main
-
-      - name: '🚀 Deployment of Storybook 🌌'
-        uses: mdirshaddev/iobeat/.github/workflows/storybook.yml@main
-
-      - name: '📢 Publish for Chromatic'
-        uses: mdirshaddev/iobeat/.github/workflows/chromatic.yml@main
+    name: '🔍 Check for Code Quality'
+    uses: mdirshaddev/iobeat/.github/workflows/codeql.yml@main

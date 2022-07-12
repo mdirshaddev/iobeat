@@ -7,17 +7,5 @@ on:
 
 jobs:
   development:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: '🔍 Check for Code Quality'
-        uses: mdirshaddev/iobeat/.github/workflows/codeql.yml@development
-
-      - name: '📦 Build the production files'
-        uses: mdirshaddev/iobeat/.github/workflows/build.yml@development
-
-      - name: '🧪 Cypress End to End Testing'
-        uses: mdirshaddev/iobeat/.github/workflows/cypress.yml@development
-
-      - name: '📢 Publish for Chromatic'
-        uses: mdirshaddev/iobeat/.github/workflows/chromatic.yml@development
+    name: '🔍 Check for Code Quality'
+    uses: mdirshaddev/iobeat/.github/workflows/codeql.yml@development
