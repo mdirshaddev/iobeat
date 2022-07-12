@@ -1,0 +1,28 @@
+name: '👨‍🚀 Ready for Production Deployment 🚀'
+
+on:
+  pull_request:
+    branches:
+      - main
+    types: [closed]
+
+jobs:
+  deployment:
+    if: ${{ github.event.pull_request.merged }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: '🔍 Check for Code Quality'
+        uses: .github/workflows/codeql.yml@main
+
+      - name: '📦 Build the production files'
+        uses: .github/workflows/build.yml@main
+
+      - name: '🧪 Cypress End to End Testing'
+        uses: .github/workflows/cypress.yml@main
+
+      - name: '🚀 Deployment of Storybook 🌌'
+        uses: .github/workflows/storybook.yml@main
+
+      - name: '📢 Publish for Chromatic'
+        uses: .github/workflows/chromatic.yml@main

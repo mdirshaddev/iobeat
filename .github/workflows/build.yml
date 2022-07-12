@@ -1,0 +1,34 @@
+name: '📦 Build the production files'
+
+on:
+  workflow_call:
+
+jobs:
+  build:
+    name: '⛑️ Build The Web Application'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: '☁️ Checkout Repository'
+        uses: actions/checkout@v2
+
+      - name: '🔧 Setup Node.js'
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.15.1
+
+      - name: '🔧 Install Yarn Globally'
+        run: npm i -g yarn@latest
+
+      - name: '📦 Install Dependencies'
+        run: yarn install --frozen-lockfile
+
+      - name: '⛑️ Build the Web Application'
+        run: |
+          export SENTRY_AUTH_TOKEN=${{ secrets.SENTRY_AUTH_TOKEN }} && yarn build
+
+      - name: '♻️ Upload Artifacts'
+        uses: actions/upload-artifact@v3
+        with:
+          name: build
+          path: .next
