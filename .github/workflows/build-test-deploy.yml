@@ -99,8 +99,6 @@ jobs:
         uses: cypress-io/github-action@v4
         with:
           install: true
-          record: true
-          parallel: true
           # Specify Browser since container image is compile with Firefox
           browser: firefox
           start: yarn start
@@ -109,6 +107,8 @@ jobs:
           ci-build-id: ${{ needs.prepare.outputs.uuid }}
           group: 'Iobeat End to End Testing'
           tag: node-16.15.1
+          record: true
+          parallel: true
           config-file: cypress.config.ts
         env:
           CYPRESS_PROJECT_ID: ${{ secrets.CYPRESS_PROJECT_ID }}
@@ -118,14 +118,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           DEBUG: 'cypress:*'
 
-      - name: Upload video 📼
-        id: upload-video
-        uses: actions/upload-artifact@v2
-        if: always()
-        with:
-          name: Test videos
-          path: cypress/videos
-          retention-days: 14
       - name: Print Dashboard URL
         run: |
           echo Cypress finished with: ${{ steps.cypress.outcome }}
