@@ -3,7 +3,7 @@ name: '👨‍🚀 Ready for Production Deployment 🚀'
 on:
   pull_request:
     branches:
-      - main
+      - development
     types: [closed]
 
 jobs:
