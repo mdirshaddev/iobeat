@@ -10,4 +10,4 @@ jobs:
   deployment:
     if: ${{ github.event.pull_request.merged }}
     name: '🔍 Check for Code Quality'
-    uses: mdirshaddev/iobeat/.github/workflows/codeql.yml
+    uses: mdirshaddev/iobeat/.github/workflows/codeql.yml@main

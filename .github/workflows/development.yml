@@ -8,4 +8,4 @@ on:
 jobs:
   development:
     name: '🔍 Check for Code Quality'
-    uses: mdirshaddev/iobeat/.github/workflows/codeql.yml
+    uses: mdirshaddev/iobeat/.github/workflows/codeql.yml@development
