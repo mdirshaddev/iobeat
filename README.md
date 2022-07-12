@@ -1,7 +1,10 @@
 # Iobeat
 
-[![Code Quality](https://github.com/mdirshaddev/iobeat/actions/workflows/codeql.yml/badge.svg)](https://github.com/mdirshaddev/iobeat/actions/workflows/codeql.yml)
-[![Storybook](https://raw.githubusercontent.com/storybooks/brand/master/badge/badge-storybook.svg)](https://www.chromatic.com/builds?appId=62c1b73e183cb81fa78ee635)
+[![🧑‍🔬 Development](https://github.com/mdirshaddev/iobeat/actions/workflows/development.yml/badge.svg)](https://github.com/mdirshaddev/iobeat/actions/workflows/development.yml)
+[![Production 🚀](https://github.com/mdirshaddev/iobeat/actions/workflows/production.yml/badge.svg)](https://github.com/mdirshaddev/iobeat/actions/workflows/production.yml)
+[![Code Quality 🧑‍💻](https://github.com/mdirshaddev/iobeat/actions/workflows/codeql.yml/badge.svg)](https://github.com/mdirshaddev/iobeat/actions/workflows/codeql.yml)
+[![pages-build-deployment](https://github.com/mdirshaddev/iobeat/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/mdirshaddev/iobeat/actions/workflows/pages/pages-build-deployment)
+[![Storybook](https://raw.githubusercontent.com/storybooks/brand/master/badge/badge-storybook.svg)](https://mdirshaddev.github.io/iobeat/)
 
 **Final Year Project on Heart Attack Prediction using Tensorflow.js deep learning model.**
 
