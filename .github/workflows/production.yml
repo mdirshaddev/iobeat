@@ -24,7 +24,6 @@ jobs:
     secrets:
       CYPRESS_PROJECT_ID: ${{ secrets.CYPRESS_PROJECT_ID }}
       CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   chormatic-publish:
     needs: [cypress-test]
@@ -37,5 +36,3 @@ jobs:
     needs: [chormatic-publish]
     name: '🚀 Deploy Storybook to GitHub Pages'
     uses: mdirshaddev/iobeat/.github/workflows/storybook.yml@main
-    secrets:
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
