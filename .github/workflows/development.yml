@@ -11,13 +11,13 @@ jobs:
 
     steps:
       - name: '🔍 Check for Code Quality'
-        uses: .github/workflows/codeql.yml@development
+        uses: mdirshaddev/iobeat/.github/workflows/codeql.yml@development
 
       - name: '📦 Build the production files'
-        uses: .github/workflows/build.yml@development
+        uses: mdirshaddev/iobeat/.github/workflows/build.yml@development
 
       - name: '🧪 Cypress End to End Testing'
-        uses: .github/workflows/cypress.yml@development
+        uses: mdirshaddev/iobeat/.github/workflows/cypress.yml@development
 
       - name: '📢 Publish for Chromatic'
-        uses: .github/workflows/chromatic.yml@development
+        uses: mdirshaddev/iobeat/.github/workflows/chromatic.yml@development
