@@ -103,7 +103,8 @@ jobs:
         with:
           install: true
           # Specify Browser since container image is compile with Firefox
-          browser: edge
+          headed: false
+          browser: electron
           start: yarn start
           wait-on: 'http://localhost:3000'
           wait-on-timeout: 60
