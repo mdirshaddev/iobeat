@@ -7,8 +7,8 @@ export default defineConfig({
   scrollBehavior: 'bottom',
   video: true,
   videosFolder: 'cypress/videos',
-  videoCompression: 15,
-  videoUploadOnPasses: false,
+  videoCompression: 32,
+  videoUploadOnPasses: true,
   e2e: {
     setupNodeEvents(on, config) {
       // implement node event listeners here
