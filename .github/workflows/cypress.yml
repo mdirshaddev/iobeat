@@ -1,7 +1,10 @@
-name: '🧪 Cypress End to End Testing'
+name: 'Cypress'
 
 on:
-  workflow_call:
+  workflow_run:
+    workflows: ['Build']
+    types:
+      - 'completed'
 
 jobs:
   # single job that generates and outputs a common id

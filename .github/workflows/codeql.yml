@@ -1,7 +1,6 @@
-name: '🧑‍💻 Code Quality'
+name: 'Code Quality'
 
-on:
-  workflow_call:
+on: [push, pull_request]
 
 jobs:
   code-quality:

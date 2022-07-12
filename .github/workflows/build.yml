@@ -1,7 +1,10 @@
-name: '📦 Build the production files'
+name: 'Build'
 
 on:
-  workflow_call:
+  workflow_run:
+    workflows: ['Code Quality']
+    types:
+      - 'completed'
 
 jobs:
   build:

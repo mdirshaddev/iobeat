@@ -1,7 +1,10 @@
-name: '🚀 Deployment of Storybook 🌌'
+name: 'Storybook'
 
 on:
-  workflow_call:
+  workflow_run:
+    workflows: ['Cypress']
+    types:
+      - 'completed'
 
 jobs:
   deploy:
