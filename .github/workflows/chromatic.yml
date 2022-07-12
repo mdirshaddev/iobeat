@@ -2,11 +2,13 @@ name: '📢 Publish to Chromatic'
 
 on:
   workflow_call:
+    secrets:
+      CHROMATIC_PROJECT_TOKEN:
+        required: true
 
 jobs:
   chromatic-deployment:
     name: '☁️ Chromatic Publish of Stories'
-    needs: [cypress-test]
     runs-on: ubuntu-latest
 
     steps:

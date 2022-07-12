@@ -4,8 +4,33 @@ on:
   push:
     branches:
       - 'development'
+  pull_request:
+    branches:
+      - 'development'
 
 jobs:
-  development:
+  code-ql:
     name: '🔍 Check for Code Quality'
     uses: mdirshaddev/iobeat/.github/workflows/codeql.yml@development
+
+  build:
+    needs: [code-ql]
+    name: '📦 Build the Source Code'
+    uses: mdirshaddev/iobeat/.github/workflows/build.yml@development
+    secrets:
+      SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+
+  cypress-test:
+    needs: [build]
+    name: '🧪 Cypress End to End Test'
+    uses: mdirshaddev/iobeat/.github/workflows/cypress.yml@development
+    secrets:
+      CYPRESS_PROJECT_ID: ${{ secrets.CYPRESS_PROJECT_ID }}
+      CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+
+  chormatic-publish:
+    needs: [cypress-test]
+    name: '📢 Publish Stories to Chromatic'
+    uses: mdirshaddev/iobeat/.github/workflows/chromatic.yml@development
+    secrets:
+      CHROMATIC_PROJECT_TOKEN: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}

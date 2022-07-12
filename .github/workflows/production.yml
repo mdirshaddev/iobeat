@@ -1,13 +1,38 @@
 name: '👨‍🚀 Ready for Production Deployment 🚀'
 
 on:
-  pull_request:
+  push:
     branches:
-      - main
-    types: [closed]
+      - 'main'
 
 jobs:
-  deployment:
-    if: github.event_name == 'pull_request' && github.event.action == 'closed' && github.event.pull_request.merged == true
+  code-ql:
     name: '🔍 Check for Code Quality'
     uses: mdirshaddev/iobeat/.github/workflows/codeql.yml@main
+
+  build:
+    needs: [code-ql]
+    name: '📦 Build the Source Code'
+    uses: mdirshaddev/iobeat/.github/workflows/build.yml@main
+    secrets:
+      SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+
+  cypress-test:
+    needs: [build]
+    name: '🧪 Cypress End to End Test'
+    uses: mdirshaddev/iobeat/.github/workflows/cypress.yml@main
+    secrets:
+      CYPRESS_PROJECT_ID: ${{ secrets.CYPRESS_PROJECT_ID }}
+      CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+
+  chormatic-publish:
+    needs: [cypress-test]
+    name: '📢 Publish Stories to Chromatic'
+    uses: mdirshaddev/iobeat/.github/workflows/chromatic.yml@main
+    secrets:
+      CHROMATIC_PROJECT_TOKEN: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+
+  storybook-gh-pages-publish:
+    needs: [chormatic-publish]
+    name: '🚀 Deploy Storybook to GitHub Pages'
+    uses: mdirshaddev/iobeat/.github/workflows/storybook.yml@main

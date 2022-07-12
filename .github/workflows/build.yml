@@ -1,7 +1,10 @@
-name: '📦 Build the production files'
+name: '📦 Build Web Application'
 
 on:
   workflow_call:
+    secrets:
+      SENTRY_AUTH_TOKEN:
+        required: true
 
 jobs:
   build:
